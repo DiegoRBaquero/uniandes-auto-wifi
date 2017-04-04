@@ -13,7 +13,7 @@ let contextMenu
 let interval
 let sleeping = false
 
-app.dock.hide()
+if (app.dock !== undefined) app.dock.hide()
 
 function createWindow (show = false) {
   if (mainWindow !== undefined) mainWindow.close()
@@ -118,7 +118,7 @@ function createConfigWindow () {
   }))
 
   // Open the DevTools.
-  mainWindow.webContents.openDevTools()
+  // mainWindow.webContents.openDevTools()
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {

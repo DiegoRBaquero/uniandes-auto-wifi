@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'Monem';
+    src: url('../fonts/monem.eot'), url('../fonts/monem.woff') format('woff'), url('../fonts/monem.ttf')  format('truetype');
+}
+
+body {
+    background-color: #fff200;
+    font-family: 'Monem', Fallback, sans-serif;
+}

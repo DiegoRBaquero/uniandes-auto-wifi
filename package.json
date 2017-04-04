@@ -14,11 +14,12 @@
     "electron-packager": "^8.6.0"
   },
   "keywords": [
-    "Electron",
-    "demo",
-    "quick",
-    "start",
-    "tutorial"
+    "Uniandes",
+    "SENECA",
+    "wifi",
+    "wi-fi",
+    "auto",
+    "electron"
   ],
   "license": "MIT",
   "main": "main.js",

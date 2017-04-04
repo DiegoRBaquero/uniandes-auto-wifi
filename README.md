@@ -11,11 +11,11 @@ Aplicación hecha con Electron para conectarse automáticamente a la red Wi-Fi S
 
 ## Desarrollo
 
-To clone and run this repository you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer. From your command line:
+Se necesita [Git](https://git-scm.com) y [Node.js 6.5+](https://nodejs.org/en/download/) (que viene con [npm](http://npmjs.com)) previamente instalado. Posteriormente, en consola:
 
 ```bash
 # Clonar el repositorio
-git clone https://github.com/DiegoRBaquero/uniandes-auto-wifi
+git clone https://github.com/DiegoRBaquero/uniandes-auto-wifi.git
 # Entrar en la carpeta
 cd uniandes-auto-wifi
 # Instalar dependencias

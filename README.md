@@ -1,5 +1,7 @@
 # Uniandes Auto Wi-Fi
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/DiegoRBaquero/uniandes-auto-wifi.svg)](https://greenkeeper.io/)
+
 Aplicación hecha con Electron para conectarse automáticamente a la red Wi-Fi SENECA de la Universidad de Los Andes.
 
 ### Características:

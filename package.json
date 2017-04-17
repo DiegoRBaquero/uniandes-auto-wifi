@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "author": "Diego Rodríguez Baquero",
   "dependencies": {
+    "auto-launch": "^5.0.1",
     "electron-config": "^0.2.1",
     "is-ip": "^2.0.0",
     "is-online": "^7.0.0",
@@ -11,7 +12,8 @@
   },
   "devDependencies": {
     "electron": "^1.6.2",
-    "electron-packager": "^8.6.0"
+    "electron-packager": "^8.6.0",
+    "standard": "^10.0.2"
   },
   "keywords": [
     "Uniandes",
@@ -26,7 +28,9 @@
   "productName": "Uniandes Auto Wi-Fi",
   "repository": "https://github.com/DiegoRBaqueor/uniandes-auto-wifi",
   "scripts": {
-    "build": "electron-packager --overwrite .",
+    "pretest": "standard",
+    "build": "electron-packager --out=dist --asar --overwrite .",
+    "build-dist": "electron-packager --out=dist --asar --overwrite --all .",
     "start": "electron ."
   }
 }

@@ -3,10 +3,12 @@ const path = require('path')
 const url = require('url')
 const isOnline = require('is-online')
 const Config = require('electron-config')
+const AutoLaunch = require('auto-launch')
+
+const APP_NAME = require('./package.json').productName
+
 const config = new Config()
 
-// Keep a global reference of the window object, if you don't, the window will
-// be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
 let tray
 let contextMenu
@@ -14,6 +16,16 @@ let interval
 let sleeping = false
 
 if (app.dock !== undefined) app.dock.hide()
+
+const appLauncher = new AutoLaunch({
+  name: APP_NAME,
+  path: process.platform === 'darwin' ? app.getPath('exe').replace(/\.app\/Content.*/, '.app') : undefined,
+  isHidden: true
+})
+
+appLauncher.isEnabled().then(enabled => {
+  if (!enabled) return appLauncher.enable()
+})
 
 function createWindow (show = false) {
   if (mainWindow !== undefined) mainWindow.close()
@@ -53,7 +65,7 @@ function createWindow (show = false) {
 }
 
 function createTray () {
-  tray = new Tray(nativeImage.createFromPath(path.join(__dirname, 'img','logo.png')))
+  tray = new Tray(nativeImage.createFromPath(path.join(__dirname, 'img', 'logo.png')))
   contextMenu = Menu.buildFromTemplate([
     { label: 'Abrir',
       click () {
@@ -131,13 +143,10 @@ function createConfigWindow () {
   })
 }
 
-// This method will be called when Electron has finished
-// initialization and is ready to create browser windows.
-// Some APIs can only be used after this event occurs.
 app.on('ready', () => {
   createTray()
-  // let usuario
-  if ((usuario = config.get('usuario'))) {
+  let usuario = config.get('usuario')
+  if (usuario !== undefined) {
     console.log(usuario)
     createWindow()
   } else {
@@ -145,7 +154,6 @@ app.on('ready', () => {
   }
 })
 
-// Quit when all windows are closed.
 app.on('window-all-closed', function () {
   console.log('Windows closed')
   // On OS X it is common for applications and their menu bar
@@ -163,8 +171,6 @@ app.on('activate', function () {
   }
 })
 
-// In this file you can include the rest of your app's specific main process
-// code. You can also put them in separate files and require them here.
 function checkInternet () {
   testInternet()
   if (interval !== undefined) clearInterval(interval)
